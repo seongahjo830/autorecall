@@ -2383,12 +2383,8 @@ runBtn.addEventListener('click',run);
 
 function installClick(e){
   if(e&&e.preventDefault) e.preventDefault();
-  /* 숨은 iframe으로 다운로드 발사 — 페이지 이동·스크롤과 절대 안 부딪힘 */
-  var f=document.createElement('iframe');
-  f.style.cssText='display:none;width:0;height:0;border:0';
-  f.src='https://view.cleancode.kr/4prism/AutoRecall-latest-setup.exe';
-  document.body.appendChild(f);
-  setTimeout(function(){ if(f.parentNode) f.parentNode.removeChild(f); },120000);
+  /* 최상위 내비게이션 다운로드(제스처 필수) — 크로스오리진 iframe 방식은 크롬이 차단해서 금지 */
+  window.location.assign('https://view.cleancode.kr/4prism/AutoRecall-latest-setup.exe');
   /* 시작 확인 토스트 */
   try{
     var t=document.getElementById('dlToast');
