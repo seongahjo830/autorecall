@@ -2382,8 +2382,26 @@ Object.values(els).forEach(e=>e.addEventListener('input',onSlide));
 runBtn.addEventListener('click',run);
 
 function installClick(e){
-  e.preventDefault();
-  window.location.href='https://view.cleancode.kr/4prism/AutoRecall-latest-setup.exe';
+  if(e&&e.preventDefault) e.preventDefault();
+  /* 숨은 iframe으로 다운로드 발사 — 페이지 이동·스크롤과 절대 안 부딪힘 */
+  var f=document.createElement('iframe');
+  f.style.cssText='display:none;width:0;height:0;border:0';
+  f.src='https://view.cleancode.kr/4prism/AutoRecall-latest-setup.exe';
+  document.body.appendChild(f);
+  setTimeout(function(){ if(f.parentNode) f.parentNode.removeChild(f); },120000);
+  /* 시작 확인 토스트 */
+  try{
+    var t=document.getElementById('dlToast');
+    if(!t){
+      t=document.createElement('div'); t.id='dlToast';
+      t.style.cssText='position:fixed;left:50%;bottom:26px;transform:translateX(-50%) translateY(8px);z-index:2147482900;background:#123B2F;color:#fff;font-weight:700;font-size:14px;line-height:1;padding:13px 20px;border-radius:999px;box-shadow:0 8px 24px rgba(0,0,0,.28);opacity:0;transition:opacity .35s ease,transform .35s ease;pointer-events:none;font-family:Pretendard,-apple-system,BlinkMacSystemFont,"Segoe UI","Malgun Gothic",sans-serif';
+      t.textContent='⬇️ 설치파일 다운로드가 시작됐습니다';
+      document.body.appendChild(t);
+    }
+    clearTimeout(t._h1);
+    requestAnimationFrame(function(){ t.style.opacity='1'; t.style.transform='translateX(-50%) translateY(0)'; });
+    t._h1=setTimeout(function(){ t.style.opacity='0'; t.style.transform='translateX(-50%) translateY(8px)'; },3200);
+  }catch(err){}
 }
 
 /* ══════════ 스크롤 등장 모션 (JS가 클래스 부여 → JS 없으면 항상 보임) ══════════ */
