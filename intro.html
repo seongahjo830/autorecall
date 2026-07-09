@@ -102,6 +102,14 @@
 
   /* 공통 타이포 */
   .kicker{font-size:clamp(12px,1.3vw,14px);font-weight:800;color:var(--teal-d);letter-spacing:.01em}
+  /* "치과의사가 직접 만든" 신뢰 배지 */
+  .madeby{display:inline-flex;align-items:center;gap:8px;font-weight:800;
+    font-size:clamp(14px,1.65vw,19px);color:var(--teal-d);background:var(--teal-s);
+    border:1.6px solid var(--teal-line);padding:7px 16px;border-radius:999px;letter-spacing:-.01em;
+    box-shadow:0 4px 14px rgba(14,124,107,.14)}
+  .madeby .emoji{font-size:1.15em;line-height:1}
+  .madeby b{color:var(--teal-d);position:relative;background-image:linear-gradient(transparent 58%,#bfeee4 58%);
+    background-repeat:no-repeat;background-size:100% 100%;padding:0 .08em;border-radius:2px}
   h1.title{font-size:clamp(24px,3.4vw,40px);font-weight:900;line-height:1.16;letter-spacing:-.025em;margin-top:6px}
   h2.title{font-size:clamp(21px,2.7vw,32px);font-weight:900;line-height:1.2;letter-spacing:-.025em}
   .mark{background-image:linear-gradient(transparent 50%,#ffd24d 50%);background-repeat:no-repeat;
@@ -283,8 +291,8 @@
 
         <!-- ① 웹툰 -->
         <section class="slide s1 in">
-          <span class="kicker u" style="--d:1.95s">치과의사가 만든 · 우리치과 묻힌 환자 발굴</span>
-          <h1 class="title hookTitle">치료하다 사라진 우리 환자,<br><span class="mark">찾다 지쳐서 직접 만들었습니다</span></h1>
+          <span class="madeby pu" style="--d:1.95s"><span class="emoji">🦷</span> <b>치과의사가 직접</b> 만든 프로그램</span>
+          <h1 class="title hookTitle" style="margin-top:10px">치료하다 사라진 우리 환자,<br><span class="mark">찾다 지쳐서 직접 만들었습니다</span></h1>
           <div class="scene">
             <div class="doodle">
               <svg viewBox="0 0 200 210" xmlns="http://www.w3.org/2000/svg" fill="none"
