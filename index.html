@@ -1574,7 +1574,7 @@
 </section>
 
 <!-- ── 피날레 : F1 풀밴드 클로징 (2026-07-06) ── -->
-<section class="fin">
+<section class="fin" id="finale">
   <div class="feye">이 명단, 우리 병원 버전은</div>
   <h2>이미 <span class="y">차트 안에</span> 있습니다.<br>꺼내는 데 딱 3분.</h2>
   <p class="fsub">고민하는 지금도 명단은 쌓이고 있습니다 — 오늘 걸 전화부터 보여드릴게요.</p>
@@ -2520,8 +2520,8 @@ function installClick(e){
     else if(d.arIntro==='install'){
       closeFrame();
       setTimeout(function(){
-        if(window.__smoothTo){ window.__smoothTo('#opens',900); }
-        else { var el=document.getElementById('opens'); if(el) el.scrollIntoView({behavior:'smooth',block:'start'}); }
+        if(window.__smoothTo){ window.__smoothTo('#finale',900); }
+        else { var el=document.getElementById('finale'); if(el) el.scrollIntoView({behavior:'smooth',block:'start'}); }
       }, 40);
     }
   });
