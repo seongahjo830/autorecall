@@ -29,19 +29,22 @@
   }
   *{box-sizing:border-box;margin:0;padding:0}
   html,body{height:100%}
-  body{font-family:var(--sans);color:var(--ink);background:#0c1512;-webkit-font-smoothing:antialiased;letter-spacing:-.01em}
+  body{font-family:var(--sans);color:var(--ink);background:transparent;-webkit-font-smoothing:antialiased;letter-spacing:-.01em}
 
+  /* 반투명 스크림 — 뒤 랜딩이 비쳐 보이게(팝업 인식) */
   #arIntro{position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;
     padding:clamp(8px,1.6vh,20px);
     background:
-      radial-gradient(1100px 640px at 80% 10%, rgba(14,124,107,.18), transparent 60%),
-      radial-gradient(820px 560px at 12% 94%, rgba(176,132,0,.12), transparent 60%),
-      #0b1210;}
+      radial-gradient(1100px 640px at 80% 10%, rgba(14,124,107,.14), transparent 60%),
+      radial-gradient(820px 560px at 12% 94%, rgba(176,132,0,.08), transparent 60%),
+      rgba(9,14,12,.5);
+    -webkit-backdrop-filter:blur(2px);backdrop-filter:blur(2px);}
   .backdrop{position:absolute;inset:0}
 
-  .poster{position:relative;width:min(1180px,97vw);height:min(760px,96vh);
+  /* 포스터 = 뷰포트의 ~80% (transform 비례축소 → 내부 넘침 없음, 주변에 랜딩 보임) */
+  .poster{position:relative;width:min(1180px,97vw);height:min(760px,96vh);transform:scale(.84);
     background:var(--paper);border-radius:22px;overflow:hidden;border:1px solid #efe9dc;
-    box-shadow:0 30px 90px rgba(0,0,0,.5);display:grid;grid-template-rows:auto 1fr auto}
+    box-shadow:0 40px 100px rgba(0,0,0,.55);display:grid;grid-template-rows:auto 1fr auto}
 
   .close{position:absolute;top:12px;right:14px;z-index:40;width:34px;height:34px;border-radius:50%;
     border:1.5px solid var(--line);background:#fff;color:var(--ink2);font-size:19px;line-height:1;
