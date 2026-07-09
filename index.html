@@ -2497,5 +2497,36 @@ function installClick(e){
   upd();
 })();
 </script>
+
+<!-- ══ AutoRecall 인트로 팝업 (iframe 격리 오버레이 · 2026-07-09) ══ -->
+<iframe id="arIntroFrame" src="intro.html" title="AutoRecall 소개"
+  style="position:fixed;inset:0;width:100%;height:100%;border:0;z-index:2147483000;background:#0b1210"></iframe>
+<script>
+(function(){
+  var f=document.getElementById('arIntroFrame');
+  if(!f) return;
+  var html=document.documentElement, prevOv=html.style.overflow;
+  html.style.overflow='hidden';                     /* 팝업 동안 배경 스크롤 잠금 */
+  function closeFrame(){
+    if(!f) return;
+    if(f.parentNode) f.parentNode.removeChild(f);
+    html.style.overflow=prevOv||'';
+    f=null;
+  }
+  window.addEventListener('message', function(e){
+    var d=e.data;
+    if(!d || d.arIntro===undefined) return;
+    if(d.arIntro==='close'){ closeFrame(); }
+    else if(d.arIntro==='install'){
+      closeFrame();
+      setTimeout(function(){
+        if(window.__smoothTo){ window.__smoothTo('#opens',900); }
+        else { var el=document.getElementById('opens'); if(el) el.scrollIntoView({behavior:'smooth',block:'start'}); }
+      }, 40);
+    }
+  });
+  f.addEventListener('error', closeFrame);
+})();
+</script>
 </body>
 </html>
